@@ -16,13 +16,24 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        auth.delegate = self
     }
 
 
     @IBAction func registerPressed(_ sender: UIButton) {
         auth.registerWithEmail(emailTextField.text, andPassword: passwordTextField.text)
     }
+    
+}
+
+
+extension RegisterViewController: AuthenticationDelegate {
+    func isAuthenticated(_ user: Bool) {
+        if user {
+            performSegue(withIdentifier: K.Segue.registerSegue, sender: self)
+        }
+    }
+    
     
 }
 

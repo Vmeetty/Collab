@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        auth.delegate = self
 
     }
 
@@ -26,5 +27,15 @@ class LoginViewController: UIViewController {
     
     @IBAction func forgotPassPresser(_ sender: UIButton) {
     }
+    
+}
+
+extension LoginViewController: AuthenticationDelegate {
+    func isAuthenticated(_ user: Bool) {
+        if user {
+            performSegue(withIdentifier: K.Segue.loginSegue, sender: self)
+        }
+    }
+    
     
 }

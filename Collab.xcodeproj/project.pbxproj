@@ -20,6 +20,9 @@
 		CE6CE33B2825E6CD006D5621 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE33A2825E6CC006D5621 /* Authentication.swift */; };
 		CE6CE33E2825FEEB006D5621 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE33D2825FEEB006D5621 /* UserManager.swift */; };
 		CE6CE3402825FF31006D5621 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE33F2825FF31006D5621 /* User.swift */; };
+		CE6CE34328260208006D5621 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE34228260208006D5621 /* TableViewController.swift */; };
+		CE6CE34628260337006D5621 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE34528260337006D5621 /* TableViewCell.swift */; };
+		CE6CE3482826C20D006D5621 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE3472826C20D006D5621 /* ProfileViewController.swift */; };
 		DBF9A886D1F3ECC013BD0758 /* Pods_Collab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6C2E2616A59739CE6AAB5C /* Pods_Collab.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +45,9 @@
 		CE6CE33A2825E6CC006D5621 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		CE6CE33D2825FEEB006D5621 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		CE6CE33F2825FF31006D5621 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CE6CE34228260208006D5621 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		CE6CE34528260337006D5621 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		CE6CE3472826C20D006D5621 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +104,8 @@
 				CE143B5D2825222000743C1D /* SceneDelegate.swift */,
 				CE6CE33C2825E6D7006D5621 /* Model */,
 				CE6CE3392825E6B7006D5621 /* Controller */,
+				CE6CE34428260271006D5621 /* View */,
 				CE6CE3412825FFDA006D5621 /* Resources */,
-				CE143B612825222000743C1D /* Main.storyboard */,
 				CE143B642825222100743C1D /* Assets.xcassets */,
 				CE143B662825222100743C1D /* LaunchScreen.storyboard */,
 				CE143B692825222100743C1D /* Info.plist */,
@@ -114,6 +120,8 @@
 				CE143B5F2825222000743C1D /* SplashViewController.swift */,
 				CE6CE2F12825A620006D5621 /* LoginViewController.swift */,
 				CE6CE2F32825A634006D5621 /* RegisterViewController.swift */,
+				CE6CE34228260208006D5621 /* TableViewController.swift */,
+				CE6CE3472826C20D006D5621 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -134,6 +142,15 @@
 				CE6CE2F52825B83B006D5621 /* Constants.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE6CE34428260271006D5621 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE143B612825222000743C1D /* Main.storyboard */,
+				CE6CE34528260337006D5621 /* TableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,8 +272,11 @@
 				CE6CE33B2825E6CD006D5621 /* Authentication.swift in Sources */,
 				CE6CE2F22825A620006D5621 /* LoginViewController.swift in Sources */,
 				CE6CE2F42825A634006D5621 /* RegisterViewController.swift in Sources */,
+				CE6CE34328260208006D5621 /* TableViewController.swift in Sources */,
 				CE143B602825222000743C1D /* SplashViewController.swift in Sources */,
 				CE143B5C2825222000743C1D /* AppDelegate.swift in Sources */,
+				CE6CE3482826C20D006D5621 /* ProfileViewController.swift in Sources */,
+				CE6CE34628260337006D5621 /* TableViewCell.swift in Sources */,
 				CE6CE3402825FF31006D5621 /* User.swift in Sources */,
 				CE143B5E2825222000743C1D /* SceneDelegate.swift in Sources */,
 				CE6CE33E2825FEEB006D5621 /* UserManager.swift in Sources */,
@@ -412,6 +432,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Collab/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Collab;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Into Collab app usage only.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -443,6 +464,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Collab/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Collab;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Into Collab app usage only.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
