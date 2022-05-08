@@ -12,8 +12,8 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var imageImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var rolLabel: UILabel!
-    @IBOutlet weak var callButton: UIButton!
-    @IBOutlet weak var videoCallButton: UIButton!
+    @IBOutlet weak var callButton: UIImageView!
+    @IBOutlet weak var videoCallButton: UIImageView!
     
 
 

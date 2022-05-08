@@ -21,6 +21,13 @@ class TableViewController: UITableViewController {
         users.append(User(name: "Olja", role: "Love"))
 
     }
+    
+    
+    @IBAction func settingsPressed(_ sender: UIBarButtonItem) {
+        Service.shared.showActionSheetBy(viewController: self)
+    }
+    
+    
 
     // MARK: - Table view data source
 

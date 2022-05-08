@@ -16,6 +16,7 @@ struct K {
     struct Segue {
         static let registerSegue = "RegisterToUsers"
         static let loginSegue    = "LoginToUsers"
+        static let profileSegue  = "UsersToProfile"
     }
     
     struct Id {

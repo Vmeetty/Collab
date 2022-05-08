@@ -58,7 +58,7 @@ class UserManager {
         
         let uploadRef = storage.reference(withPath: uid)
         
-        guard let image = image?.jpegData(compressionQuality: 0.5) else { return }
+        guard let image = image?.jpegData(compressionQuality: 0.25) else { return }
         
         let uploadMetadata = StorageMetadata.init()
         uploadMetadata.contentType = K.Firestore.metaData

@@ -23,6 +23,7 @@
 		CE6CE34328260208006D5621 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE34228260208006D5621 /* TableViewController.swift */; };
 		CE6CE34628260337006D5621 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE34528260337006D5621 /* TableViewCell.swift */; };
 		CE6CE3482826C20D006D5621 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE3472826C20D006D5621 /* ProfileViewController.swift */; };
+		CE6CE34C2827E1DB006D5621 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE34B2827E1DB006D5621 /* Service.swift */; };
 		DBF9A886D1F3ECC013BD0758 /* Pods_Collab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6C2E2616A59739CE6AAB5C /* Pods_Collab.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		CE6CE34228260208006D5621 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		CE6CE34528260337006D5621 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		CE6CE3472826C20D006D5621 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CE6CE34B2827E1DB006D5621 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				CE6CE33A2825E6CC006D5621 /* Authentication.swift */,
 				CE6CE33D2825FEEB006D5621 /* UserManager.swift */,
 				CE6CE33F2825FF31006D5621 /* User.swift */,
+				CE6CE34B2827E1DB006D5621 /* Service.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6CE33B2825E6CD006D5621 /* Authentication.swift in Sources */,
+				CE6CE34C2827E1DB006D5621 /* Service.swift in Sources */,
 				CE6CE2F22825A620006D5621 /* LoginViewController.swift in Sources */,
 				CE6CE2F42825A634006D5621 /* RegisterViewController.swift in Sources */,
 				CE6CE34328260208006D5621 /* TableViewController.swift in Sources */,

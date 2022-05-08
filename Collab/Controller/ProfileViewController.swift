@@ -30,6 +30,8 @@ class ProfileViewController: UIViewController {
     @objc func imageTapped() {
         presentPicker()
     }
+    
+    
 
 }
 
