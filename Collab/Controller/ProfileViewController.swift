@@ -22,6 +22,8 @@ class ProfileViewController: UIViewController {
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         profileImageView.addGestureRecognizer(tapGR)
         profileImageView.isUserInteractionEnabled = true
+        nameTextField.delegate = self
+        roleTextField.delegate = self
     }
     
     
@@ -66,11 +68,32 @@ extension ProfileViewController: PHPickerViewControllerDelegate {
                 }
             }
         }
-        
     }
-    
 }
 
 
+extension ProfileViewController: UITextFieldDelegate {
+    
+    private func textFieldShouldReturn(textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            return true
+        // Keyboard doesn't dissmis ****************=--=-=-=-=-=-=**********************777777**(&&(*&(*&(&(&
+        }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let value = textField.text, !value.isEmpty else { return }
+        var key = ""
+        switch textField {
+        case nameTextField: key = K.UserData.nameKey
+        case roleTextField: key = K.UserData.roleKey
+        default: break
+        }
+        userManager.updateUserData([key: value])
+    }
+}
 
 

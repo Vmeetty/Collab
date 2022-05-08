@@ -43,11 +43,13 @@ class UserManager {
         }
     }
     
+    
     //MARK: - Update a document in collection "users" or creating the document if it does not exist.
     
     func updateUserData(_ userData: [String: Any]) {
         db.collection(K.Firestore.usersDocument).document(uid).setData(userData, merge: true)
     }
+    
     
     
     //MARK: - Add a new image to storage

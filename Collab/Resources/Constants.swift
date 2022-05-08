@@ -31,6 +31,8 @@ struct K {
         static let emailKey    = "email"
         static let passwordKey = "password"
         static let imageURLKey = "imageURL"
+        static let nameKey     = "name"
+        static let roleKey     = "role"
     }
     
     struct Firestore {
