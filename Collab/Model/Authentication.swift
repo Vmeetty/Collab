@@ -36,7 +36,6 @@ class Authentication {
     
     
     func loginWithEmail(_ email: String?, andPassword password: String?) {
-        
         if let email = email, let password = password {
             if email.isValidEmail && password.isValidPassword {
                 Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -52,7 +51,18 @@ class Authentication {
             }
         }
     }
+    
+    
+    func passwordResset(with email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print("Resset password faild: \(error.localizedDescription)")
+            }
+        }
+    }
+    
 }
+
 
 extension String {
     

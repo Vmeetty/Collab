@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     let auth = Authentication()
+    let alerts = Alerts()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,9 @@ class LoginViewController: UIViewController {
         auth.loginWithEmail(emailTextField.text, andPassword: passwordTextField.text)
     }
     
+    
     @IBAction func forgotPassPresser(_ sender: UIButton) {
+        alerts.showFogotPasswordAlert(self)
     }
     
 }
