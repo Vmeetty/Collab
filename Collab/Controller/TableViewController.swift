@@ -16,7 +16,6 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
 
         dbManager.delegate = self
-        
 
     }
     
@@ -37,7 +36,6 @@ class TableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return users.count
     }
 
@@ -50,22 +48,19 @@ class TableViewController: UITableViewController {
         } else {
             cell.imageImageView.image = UIImage(systemName: K.Images.personImage)
         }
-//        let imageUrl = users[indexPath.row].url
-//        DatabaseManager.shared.getImageWithURL(imageUrl, setResultInto: cell.imageImageView)
         Service.shared.configProfileImageView(cell.imageImageView)
+        Service.shared.configCellButtons(cell.callButton)
+        Service.shared.configCellButtons(cell.videoCallButton)
+        
         
         return cell
     }
-    
-
 }
+
 
 extension TableViewController: DatabaseManagerDelegate {
     func getUser(_ newUser: User) {
-        DispatchQueue.main.async {
-            self.users.append(newUser)
-            self.tableView.reloadData()
-        }
-        
+        self.users.append(newUser)
+        self.tableView.reloadData()
     }
 }

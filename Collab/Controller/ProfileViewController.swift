@@ -30,7 +30,9 @@ class ProfileViewController: UIViewController {
         roleTextField.delegate = self
         service.configProfileImageView(profileImageView)
         
-        DatabaseManager.shared.getCurrentUser { user in
+        DatabaseManager
+            .shared
+            .getCurrentUser { user in
             self.nameTextField.text = user.name
             self.roleTextField.text = user.role
             self.urlStr = user.url
@@ -39,7 +41,6 @@ class ProfileViewController: UIViewController {
                 .shared
                 .getImageWithURL(self.urlStr, setResultInto: self.profileImageView)
         }
-        
     }
     
     @objc func imageTapped() {

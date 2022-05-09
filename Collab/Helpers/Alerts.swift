@@ -14,7 +14,7 @@ class Alerts {
     let auth = Authentication()
     
     public func showFogotPasswordAlert(_ sender: UIViewController) {
-        let alert = UIAlertController(title: "Forgot your password?", message: "We can send a new one on your emil", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Forgot your password?", message: "We can send a new one on your email", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Send", style: .default) { alertAction in
             if let email = alert.textFields![0].text {
