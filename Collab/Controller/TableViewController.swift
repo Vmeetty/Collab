@@ -11,10 +11,13 @@ class TableViewController: UITableViewController {
     
     var users = [User]()
     let dbManager = DatabaseManager()
+    
+    let shared = Service.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.dataSource = self
         dbManager.delegate = self
 
     }
@@ -48,10 +51,9 @@ class TableViewController: UITableViewController {
         } else {
             cell.imageImageView.image = UIImage(systemName: K.Images.personImage)
         }
-        Service.shared.configProfileImageView(cell.imageImageView)
-        Service.shared.configCellButtons(cell.callButton)
-        Service.shared.configCellButtons(cell.videoCallButton)
-        
+        shared.configProfileImageView(cell.imageImageView)
+        shared.configCellButtons(cell.callButton)
+        shared.configCellButtons(cell.videoCallButton)
         
         return cell
     }

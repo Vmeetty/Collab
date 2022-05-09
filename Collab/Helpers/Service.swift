@@ -46,6 +46,7 @@ class Service {
     
     func configCellButtons(_ imageView: UIImageView) {
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
+        imageView.backgroundColor = .white
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.layer.shadowColor = UIColor.black.cgColor
