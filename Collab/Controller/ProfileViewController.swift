@@ -16,13 +16,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var roleTextField: UITextField!
     
-    var uid: String {
-        guard let id = Auth.auth().currentUser?.uid else {return UUID.init().uuidString}
-        return id
-    }
-    
-    let userManager = UserManager()
-    let service     = Service()
+    let dbManager = DatabaseManager()
+    let storageManager = StorageManager()
+    let service = Service()
     
     
     override func viewDidLoad() {
@@ -30,10 +26,11 @@ class ProfileViewController: UIViewController {
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         profileImageView.addGestureRecognizer(tapGR)
         profileImageView.isUserInteractionEnabled = true
+        
         nameTextField.delegate = self
         roleTextField.delegate = self
         service.configProfileImageView(profileImageView)
-        userManager.downloadImageTo(imageView: profileImageView)
+//        dbManager.downloadImageTo(imageView: profileImageView)
     }
     
     @objc func imageTapped() {
@@ -67,7 +64,7 @@ extension ProfileViewController: PHPickerViewControllerDelegate {
                         self.service.configProfileImageView(self.profileImageView)
                         self.profileImageView.image = image
                     }
-                    self.userManager.persistImageToStorage(image)
+                    self.storageManager.uploadImage(image)
                 }
                 if let error = error {
                     print(error)
@@ -76,24 +73,6 @@ extension ProfileViewController: PHPickerViewControllerDelegate {
             }
         }
     }
-    
-//    func downloadImage() {
-//        // Create a reference to the file you want to download
-//        let islandRef = Storage.storage().reference().child("\(uid)")
-//
-//        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-//        islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-//            if let error = error {
-//                // Uh-oh, an error occurred!
-//            } else {
-//                // Data for "images/island.jpg" is returned
-//                if let image = UIImage(data: data!) {
-//                    self.profileImageView.image = image
-//                }
-//            }
-//        }
-//    }
-        
 }
 
 
@@ -117,7 +96,7 @@ extension ProfileViewController: UITextFieldDelegate {
         case roleTextField: key = K.UserData.roleKey
         default: break
         }
-        userManager.updateUserData([key: value])
+        dbManager.updateUserData([key: value])
     }
 }
 
