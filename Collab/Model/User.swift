@@ -12,11 +12,12 @@ class User {
     
     var name: String
     var role: String
-    var image: UIImage?
+    var url: String?
     
-    init(name: String, role: String) {
+    init(name: String, role: String, url: String?) {
         self.name = name
         self.role = role
+        self.url = url
     }
     
 }

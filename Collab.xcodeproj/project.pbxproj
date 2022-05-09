@@ -13,7 +13,7 @@
 		CE143B632825222000743C1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE143B612825222000743C1D /* Main.storyboard */; };
 		CE143B652825222100743C1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE143B642825222100743C1D /* Assets.xcassets */; };
 		CE143B682825222100743C1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE143B662825222100743C1D /* LaunchScreen.storyboard */; };
-		CE1714B52828D157004203A9 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1714B42828D157004203A9 /* StorageManager.swift */; };
+		CE1714B72829318B004203A9 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1714B62829318B004203A9 /* Extension.swift */; };
 		CE6CE2F22825A620006D5621 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE2F12825A620006D5621 /* LoginViewController.swift */; };
 		CE6CE2F42825A634006D5621 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE2F32825A634006D5621 /* RegisterViewController.swift */; };
 		CE6CE2F62825B83B006D5621 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE2F52825B83B006D5621 /* Constants.swift */; };
@@ -40,7 +40,7 @@
 		CE143B642825222100743C1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE143B672825222100743C1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE143B692825222100743C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE1714B42828D157004203A9 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		CE1714B62829318B004203A9 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		CE6CE2F12825A620006D5621 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE6CE2F32825A634006D5621 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		CE6CE2F52825B83B006D5621 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 				CE6CE33C2825E6D7006D5621 /* Model */,
 				CE6CE3392825E6B7006D5621 /* Controller */,
 				CE6CE34428260271006D5621 /* View */,
-				CE6CE3412825FFDA006D5621 /* Resources */,
+				CE6CE3412825FFDA006D5621 /* Helpers */,
 				CE143B642825222100743C1D /* Assets.xcassets */,
 				CE143B662825222100743C1D /* LaunchScreen.storyboard */,
 				CE143B692825222100743C1D /* Info.plist */,
@@ -135,19 +135,19 @@
 			children = (
 				CE6CE33A2825E6CC006D5621 /* Authentication.swift */,
 				CE6CE33D2825FEEB006D5621 /* DatabaseManager.swift */,
-				CE1714B42828D157004203A9 /* StorageManager.swift */,
 				CE6CE33F2825FF31006D5621 /* User.swift */,
 				CE6CE34B2827E1DB006D5621 /* Service.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CE6CE3412825FFDA006D5621 /* Resources */ = {
+		CE6CE3412825FFDA006D5621 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				CE6CE2F52825B83B006D5621 /* Constants.swift */,
+				CE1714B62829318B004203A9 /* Extension.swift */,
 			);
-			path = Resources;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		CE6CE34428260271006D5621 /* View */ = {
@@ -278,13 +278,13 @@
 				CE6CE33B2825E6CD006D5621 /* Authentication.swift in Sources */,
 				CE6CE34C2827E1DB006D5621 /* Service.swift in Sources */,
 				CE6CE2F22825A620006D5621 /* LoginViewController.swift in Sources */,
-				CE1714B52828D157004203A9 /* StorageManager.swift in Sources */,
 				CE6CE2F42825A634006D5621 /* RegisterViewController.swift in Sources */,
 				CE6CE34328260208006D5621 /* TableViewController.swift in Sources */,
 				CE143B602825222000743C1D /* SplashViewController.swift in Sources */,
 				CE143B5C2825222000743C1D /* AppDelegate.swift in Sources */,
 				CE6CE3482826C20D006D5621 /* ProfileViewController.swift in Sources */,
 				CE6CE34628260337006D5621 /* TableViewCell.swift in Sources */,
+				CE1714B72829318B004203A9 /* Extension.swift in Sources */,
 				CE6CE3402825FF31006D5621 /* User.swift in Sources */,
 				CE143B5E2825222000743C1D /* SceneDelegate.swift in Sources */,
 				CE6CE33E2825FEEB006D5621 /* DatabaseManager.swift in Sources */,

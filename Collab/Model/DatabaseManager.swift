@@ -11,9 +11,15 @@ import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
 
+protocol DatabaseManagerDelegate {
+    func getUser(_ newUser: User)
+}
 
 class DatabaseManager {
     
+    var delegate: DatabaseManagerDelegate?
+    
+    static let shared = DatabaseManager()
     let storage = Storage.storage()
     let db = Firestore.firestore()
     
@@ -48,9 +54,121 @@ class DatabaseManager {
     
     
     
-    //MARK: - Add a new image to storage
+    //MARK: - Fetch users
     
-
+    // Current user data
+    func getCurrentUser(_ complition: @escaping (User) -> ()) {
+        let docRef = db.collection(K.Firestore.usersDocument).document(uid)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                guard let data = document.data() else { return }
+                if let email = data[K.UserData.emailKey] as? String {
+                    let name = data[K.UserData.nameKey] as? String ?? email
+                    let role = data[K.UserData.roleKey] as? String ?? ""
+                    let imageUrl = data[K.UserData.imageURLKey] as? String
+                    //                    let image = self.downLoadImageWithURL(imageUrl)
+                    let newUser = User(name: name, role: role, url: imageUrl)
+                    complition(newUser)
+                } else {
+                    print("Vlad_Ch. Email not exist")
+                    return
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
+    // All users data
+    func loadUsers() {
+        db.collection(K.Firestore.usersDocument).getDocuments() { [weak self] (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    if let email = data[K.UserData.emailKey] as? String {
+                        let name = data[K.UserData.nameKey] as? String ?? email
+                        let role = data[K.UserData.roleKey] as? String ?? ""
+                        let imageUrl = data[K.UserData.imageURLKey] as? String
+                        //                        let image = self?.downLoadImageWithURL(imageUrl)
+                        let newUser = User(name: name, role: role, url: imageUrl)
+                        self?.delegate?.getUser(newUser)
+                    } else {
+                        print("Vlad_Ch. Email not exist")
+                        return
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    //MARK: - Storage section
+    
+    private func downLoadImageWithURL(_ url: String?) -> UIImage? {
+        var image: UIImage?
+        if let imageUrl = url {
+            let httpsReference = Storage.storage().reference(forURL: imageUrl)
+            httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print("Got an download erroe: \(error)")
+                } else {
+                    print("Successfully download data with url")
+                    let fetchedImage = UIImage(data: data!)
+                    image = fetchedImage
+                }
+            }
+        }
+        return image
+    }
+    
+    func getImageWithURL(_ url: String?, setResultInto imageView: UIImageView) {
+        if let imageUrl = url {
+            let httpsReference = Storage.storage().reference(forURL: imageUrl)
+            httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print("Got an download erroe: \(error)")
+                } else {
+                    print("Successfully download data with url")
+                    imageView.image = UIImage(data: data!)
+                }
+            }
+        } else {
+            imageView.image = UIImage(systemName: K.Images.personImage)
+        }
+    }
+    
+    
+    func uploadImage(_ image: UIImage?) {
+        let uploadRef = Storage.storage().reference(withPath: "\(uid).jpg")
+        guard let image = image?.jpegData(compressionQuality: 0.25) else { return }
+        let uploadMetadata = StorageMetadata.init()
+        uploadMetadata.contentType = "image/jpeg"
+        
+        uploadRef.putData(image, metadata: uploadMetadata) { downloadMetadata, error in
+            if let error = error {
+                print("Got an erroe: \(error)")
+            } else {
+                print("Put is completed and I got this back: \(downloadMetadata)")
+                uploadRef.downloadURL { url, error in
+                    if let error = error {
+                        print("Got an erroe: \(error)")
+                    } else {
+                        guard let url = url else { return }
+                        print("Successfully stored image with url: \(url.absoluteString)")
+                        self.updateUserData([K.UserData.imageURLKey: url.absoluteString])
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
     
     
 }

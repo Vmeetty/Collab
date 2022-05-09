@@ -11,18 +11,16 @@ import FirebaseAuth
 import FirebaseStorage
 
 class ProfileViewController: UIViewController {
-
+    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var roleTextField: UITextField!
     
-    let dbManager = DatabaseManager()
-    let storageManager = StorageManager()
     let service = Service()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         profileImageView.addGestureRecognizer(tapGR)
         profileImageView.isUserInteractionEnabled = true
@@ -30,14 +28,17 @@ class ProfileViewController: UIViewController {
         nameTextField.delegate = self
         roleTextField.delegate = self
         service.configProfileImageView(profileImageView)
-//        dbManager.downloadImageTo(imageView: profileImageView)
+        DatabaseManager.shared.getCurrentUser { user in
+            self.nameTextField.text = user.name
+            self.roleTextField.text = user.role
+        }
     }
     
     @objc func imageTapped() {
         presentPicker()
     }
     
-
+    
 }
 
 
@@ -55,7 +56,7 @@ extension ProfileViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         
         picker.dismiss(animated: true)
-                    
+        
         if let itemProvider = results.first?.itemProvider {
             itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
                 if let image = image as? UIImage {
@@ -64,7 +65,7 @@ extension ProfileViewController: PHPickerViewControllerDelegate {
                         self.service.configProfileImageView(self.profileImageView)
                         self.profileImageView.image = image
                     }
-                    self.storageManager.uploadImage(image)
+                    DatabaseManager.shared.uploadImage(image)
                 }
                 if let error = error {
                     print(error)
@@ -79,10 +80,10 @@ extension ProfileViewController: PHPickerViewControllerDelegate {
 extension ProfileViewController: UITextFieldDelegate {
     
     private func textFieldShouldReturn(textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            return true
+        textField.resignFirstResponder()
+        return true
         // Keyboard doesn't dissmis ****************=--=-=-=-=-=-=**********************777777**(&&(*&(*&(&(&
-        }
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -96,8 +97,9 @@ extension ProfileViewController: UITextFieldDelegate {
         case roleTextField: key = K.UserData.roleKey
         default: break
         }
-        dbManager.updateUserData([key: value])
+        DatabaseManager.shared.updateUserData([key: value])
     }
 }
+
 
 

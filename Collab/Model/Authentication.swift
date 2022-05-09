@@ -52,8 +52,6 @@ class Authentication {
             }
         }
     }
-    
-    
 }
 
 extension String {

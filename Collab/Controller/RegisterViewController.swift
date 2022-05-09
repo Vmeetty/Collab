@@ -13,7 +13,6 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     let auth = Authentication()
-    let dbManager = DatabaseManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +29,7 @@ class RegisterViewController: UIViewController {
 
 extension RegisterViewController: AuthenticationDelegate {
     func isAuthenticated(_ user: Bool) {
-        dbManager.persistNewUserWithEmail(emailTextField.text)
+        DatabaseManager.shared.persistNewUserWithEmail(emailTextField.text)
         if user {
             performSegue(withIdentifier: K.Segue.registerSegue, sender: self)
         }
