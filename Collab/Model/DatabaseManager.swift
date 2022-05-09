@@ -59,7 +59,6 @@ class DatabaseManager {
     // Current user data
     func getCurrentUser(_ complition: @escaping (User) -> ()) {
         let docRef = db.collection(K.Firestore.usersDocument).document(uid)
-        
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 guard let data = document.data() else { return }
@@ -67,7 +66,7 @@ class DatabaseManager {
                     let name = data[K.UserData.nameKey] as? String ?? email
                     let role = data[K.UserData.roleKey] as? String ?? ""
                     let imageUrl = data[K.UserData.imageURLKey] as? String
-                    //                    let image = self.downLoadImageWithURL(imageUrl)
+//                    imageView.image = self.downLoadImageWithURL(imageUrl)
                     let newUser = User(name: name, role: role, url: imageUrl)
                     complition(newUser)
                 } else {
@@ -92,7 +91,6 @@ class DatabaseManager {
                         let name = data[K.UserData.nameKey] as? String ?? email
                         let role = data[K.UserData.roleKey] as? String ?? ""
                         let imageUrl = data[K.UserData.imageURLKey] as? String
-                        //                        let image = self?.downLoadImageWithURL(imageUrl)
                         let newUser = User(name: name, role: role, url: imageUrl)
                         self?.delegate?.getUser(newUser)
                     } else {
@@ -109,22 +107,22 @@ class DatabaseManager {
     
     //MARK: - Storage section
     
-    private func downLoadImageWithURL(_ url: String?) -> UIImage? {
-        var image: UIImage?
-        if let imageUrl = url {
-            let httpsReference = Storage.storage().reference(forURL: imageUrl)
-            httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                if let error = error {
-                    print("Got an download erroe: \(error)")
-                } else {
-                    print("Successfully download data with url")
-                    let fetchedImage = UIImage(data: data!)
-                    image = fetchedImage
-                }
-            }
-        }
-        return image
-    }
+//    private func downLoadImageWithURL(_ url: String?) -> UIImage? {
+//        var image: UIImage?
+//        if let imageUrl = url {
+//            let httpsReference = Storage.storage().reference(forURL: imageUrl)
+//            httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//                if let error = error {
+//                    print("Got an download erroe: \(error)")
+//                } else {
+//                    print("Successfully download data with url")
+//                    let fetchedImage = UIImage(data: data!)
+//                    image = fetchedImage
+//                }
+//            }
+//        }
+//        return image
+//    }
     
     func getImageWithURL(_ url: String?, setResultInto imageView: UIImageView) {
         if let imageUrl = url {

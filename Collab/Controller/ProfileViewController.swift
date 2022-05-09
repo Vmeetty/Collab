@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var roleTextField: UITextField!
     
     let service = Service()
+    var urlStr: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +29,22 @@ class ProfileViewController: UIViewController {
         nameTextField.delegate = self
         roleTextField.delegate = self
         service.configProfileImageView(profileImageView)
+        
         DatabaseManager.shared.getCurrentUser { user in
             self.nameTextField.text = user.name
             self.roleTextField.text = user.role
+            self.urlStr = user.url
+            
+            DatabaseManager
+                .shared
+                .getImageWithURL(self.urlStr, setResultInto: self.profileImageView)
         }
+        
     }
     
     @objc func imageTapped() {
         presentPicker()
     }
-    
     
 }
 
