@@ -7,6 +7,8 @@
 
 import UIKit
 import PhotosUI
+import FirebaseAuth
+import FirebaseStorage
 
 class ProfileViewController: UIViewController {
 
@@ -14,8 +16,14 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var roleTextField: UITextField!
     
+    var uid: String {
+        guard let id = Auth.auth().currentUser?.uid else {return UUID.init().uuidString}
+        return id
+    }
+    
     let userManager = UserManager()
-
+    let service     = Service()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +32,13 @@ class ProfileViewController: UIViewController {
         profileImageView.isUserInteractionEnabled = true
         nameTextField.delegate = self
         roleTextField.delegate = self
+        service.configProfileImageView(profileImageView)
+        userManager.downloadImageTo(imageView: profileImageView)
     }
-    
     
     @objc func imageTapped() {
         presentPicker()
     }
-    
     
 
 }
@@ -56,10 +64,7 @@ extension ProfileViewController: PHPickerViewControllerDelegate {
                 if let image = image as? UIImage {
                     guard let self = self else { return }
                     DispatchQueue.main.async {
-                        self.profileImageView.layer.borderWidth = 5
-                        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height / 2
-                        self.profileImageView.clipsToBounds = true
-                        self.profileImageView.contentMode = .scaleAspectFill
+                        self.service.configProfileImageView(self.profileImageView)
                         self.profileImageView.image = image
                     }
                     self.userManager.persistImageToStorage(image)
@@ -71,6 +76,24 @@ extension ProfileViewController: PHPickerViewControllerDelegate {
             }
         }
     }
+    
+//    func downloadImage() {
+//        // Create a reference to the file you want to download
+//        let islandRef = Storage.storage().reference().child("\(uid)")
+//
+//        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+//        islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//            if let error = error {
+//                // Uh-oh, an error occurred!
+//            } else {
+//                // Data for "images/island.jpg" is returned
+//                if let image = UIImage(data: data!) {
+//                    self.profileImageView.image = image
+//                }
+//            }
+//        }
+//    }
+        
 }
 
 

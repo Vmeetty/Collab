@@ -57,9 +57,7 @@ class UserManager {
     func persistImageToStorage(_ image: UIImage?) {
         
         let uploadRef = storage.reference(withPath: uid)
-        
         guard let image = image?.jpegData(compressionQuality: 0.25) else { return }
-        
         let uploadMetadata = StorageMetadata.init()
         uploadMetadata.contentType = K.Firestore.metaData
         
@@ -77,6 +75,23 @@ class UserManager {
                 print("Successfully stored image with url: \(url.absoluteString)")
                 
                 self.updateUserData([K.UserData.imageURLKey: url.absoluteString])
+            }
+        }
+    }
+    
+    func downloadImageTo(imageView: UIImageView) {
+        // Create a reference to the file you want to download
+        let islandRef = Storage.storage().reference().child("\(uid)")
+        
+        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+        islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("Faild to retrieve image from storage: \(error.localizedDescription)")
+            } else {
+                // Data for "images/island.jpg" is returned
+                if let image = UIImage(data: data!) {
+                    imageView.image = image
+                }
             }
         }
     }

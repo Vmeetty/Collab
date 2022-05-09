@@ -35,4 +35,12 @@ class Service {
             })
     }
     
+    
+    func configProfileImageView(_ imageView: UIImageView) {
+        imageView.layer.borderWidth = 5
+        imageView.layer.cornerRadius = imageView.frame.size.height / 2
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+    }
+    
 }
