@@ -1,22 +1,3 @@
-# Collab
 
 
-**Must be added to Pod file**
-
---------------------------------------------------
-
-# Uncomment the next line to define a global platform for your project
-platform :ios, '11.0'
-
-target 'Collab' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for Collab
-  pod 'RevealingSplashView'
-  pod 'FirebaseAuth'
-  pod 'FirebaseFirestore'
-  pod 'FirebaseStorage'
-  pod 'IQKeyboardManagerSwift'
-
-end
+https://user-images.githubusercontent.com/20679433/167585097-295311d5-7bf3-4e71-8d7d-6db63825e2c5.mp4
