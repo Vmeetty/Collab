@@ -164,21 +164,31 @@
                                             <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dRD-14-atg">
-                                            <rect key="frame" x="364" y="21.5" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dRD-14-atg">
+                                            <rect key="frame" x="364" y="22.5" width="30" height="31.5"/>
                                             <color key="tintColor" red="0.24313727020000001" green="0.54901963470000004" blue="0.53333336109999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="oZD-TZ-reS"/>
+                                            </constraints>
                                         </imageView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="phone" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eAg-zL-SbT">
-                                            <rect key="frame" x="305" y="22.5" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eAg-zL-SbT">
+                                            <rect key="frame" x="304" y="22.5" width="30" height="30"/>
                                             <color key="tintColor" red="0.24313727020000001" green="0.54901963470000004" blue="0.53333336109999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="31.5" id="T7n-PV-TNf"/>
+                                                <constraint firstAttribute="width" constant="30" id="pfY-b8-PAh"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="HoQ-nh-nr3" firstAttribute="top" secondItem="jzL-lN-wp2" secondAttribute="top" constant="8" id="JIP-uS-K4r"/>
+                                        <constraint firstItem="dRD-14-atg" firstAttribute="leading" secondItem="eAg-zL-SbT" secondAttribute="trailing" constant="30" id="KFa-3j-uLt"/>
+                                        <constraint firstItem="dRD-14-atg" firstAttribute="trailing" secondItem="jzL-lN-wp2" secondAttribute="trailingMargin" id="TKm-wJ-moh"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="dRD-14-atg" secondAttribute="bottom" constant="9" id="Zz9-aV-EXI"/>
                                         <constraint firstAttribute="bottom" secondItem="HoQ-nh-nr3" secondAttribute="bottom" constant="8" id="iOn-3Z-5Wl"/>
+                                        <constraint firstItem="dRD-14-atg" firstAttribute="top" secondItem="jzL-lN-wp2" secondAttribute="topMargin" constant="9" id="inb-sl-tFg"/>
                                         <constraint firstItem="HoQ-nh-nr3" firstAttribute="leading" secondItem="jzL-lN-wp2" secondAttribute="leading" constant="20" id="kpp-gg-m1X"/>
+                                        <constraint firstItem="eAg-zL-SbT" firstAttribute="top" secondItem="jzL-lN-wp2" secondAttribute="topMargin" constant="11" id="mcD-nC-6S7"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -196,14 +206,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Collab" id="JhX-h8-9un">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="XR0-KD-6PL">
-                            <imageReference key="image" image="person.crop.rectangle" catalog="system" symbolScale="large"/>
-                            <imageReference key="largeContentSizeImage" image="person.crop.circle" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.24313727020000001" green="0.54901963470000004" blue="0.53333336109999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <connections>
-                                <action selector="settingsPressed:" destination="T3a-Od-yq7" id="H5d-fe-yEQ"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" id="XR0-KD-6PL">
+                                <imageReference key="image" image="person.crop.rectangle" catalog="system" symbolScale="large"/>
+                                <imageReference key="largeContentSizeImage" image="person.crop.circle" catalog="system" symbolScale="large"/>
+                                <color key="tintColor" red="0.24313727020000001" green="0.54901963470000004" blue="0.53333336109999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="settingsPressed:" destination="T3a-Od-yq7" id="H5d-fe-yEQ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="pencil.and.outline" catalog="system" id="zVO-Mj-aek">
+                                <color key="tintColor" red="0.24313727020000001" green="0.54901963470000004" blue="0.53333336109999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <segue destination="o3z-0h-fiS" kind="show" identifier="VIdeoVCSegue" id="foi-aK-Ey0"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="Czg-C7-3xm" kind="show" identifier="UsersToProfile" id="GU5-F7-Kno"/>
@@ -311,7 +329,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IjI-qj-hRO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3863.7681159420295" y="-253.79464285714283"/>
+            <point key="canvasLocation" x="3896" y="-90"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="NOE-fD-Eov">
@@ -523,6 +541,35 @@
             </objects>
             <point key="canvasLocation" x="281.15942028985512" y="-198.09782608695653"/>
         </scene>
+        <!--Video Call View Controller-->
+        <scene sceneID="Nzk-nw-LB7">
+            <objects>
+                <viewController id="o3z-0h-fiS" customClass="VideoCallViewController" customModule="Collab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mkp-Uf-nrV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video Calls VC" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0n-KB-7Y7">
+                                <rect key="frame" x="100.5" y="295" width="213" height="37"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="f3S-vD-6so"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="V0n-KB-7Y7" firstAttribute="top" secondItem="f3S-vD-6so" secondAttribute="top" constant="207" id="6Fm-xG-yR5"/>
+                            <constraint firstItem="V0n-KB-7Y7" firstAttribute="leading" secondItem="f3S-vD-6so" secondAttribute="leading" constant="100.5" id="Dkc-Ju-Or0"/>
+                            <constraint firstItem="f3S-vD-6so" firstAttribute="trailing" secondItem="V0n-KB-7Y7" secondAttribute="trailing" constant="100.5" id="lKv-aC-rAP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="jmB-NL-Mlf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CHZ-fp-ErJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3875" y="-769"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="JhQ-q1-cZC"/>
@@ -530,6 +577,7 @@
     <resources>
         <image name="Group 2" width="298" height="93"/>
         <image name="peacesign" catalog="system" width="128" height="121"/>
+        <image name="pencil.and.outline" catalog="system" width="128" height="128"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.rectangle" catalog="system" width="128" height="93"/>

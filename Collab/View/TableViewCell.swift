@@ -8,7 +8,8 @@
 import UIKit
 
 protocol TableViewCellDelegate: AnyObject {
-   func cellPressed(indexPath: IndexPath)
+    func callPressed(indexPath: IndexPath)
+    func videoCallPressed(indexPath: IndexPath)
 }
 
 class TableViewCell: UITableViewCell {
@@ -21,18 +22,28 @@ class TableViewCell: UITableViewCell {
     
     var indexPath: IndexPath!
     weak var delegate: TableViewCellDelegate?
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(makeACall))
         callButton.addGestureRecognizer(tapGR)
         callButton.isUserInteractionEnabled = true
+        
+        let tapGRV = UITapGestureRecognizer(target: self, action: #selector(makeAVideoCall))
+        videoCallButton.addGestureRecognizer(tapGRV)
+        videoCallButton.isUserInteractionEnabled = true
+        
+        
     }
     
     @objc func makeACall() {
-        delegate?.cellPressed(indexPath: indexPath)
+        delegate?.callPressed(indexPath: indexPath)
     }
- 
+    
+    @objc func makeAVideoCall() {
+        delegate?.videoCallPressed(indexPath: indexPath)
+    }
+    
     
 }

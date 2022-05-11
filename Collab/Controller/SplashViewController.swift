@@ -25,7 +25,6 @@ class SplashViewController: UIViewController {
         revealingSplashView.startAnimation()
         
         loginButton.layer.cornerRadius = 60
-        loginButton.titleLabel?.text
         registerButton.layer.cornerRadius = 60
         
         

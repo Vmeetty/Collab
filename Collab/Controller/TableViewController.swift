@@ -61,7 +61,7 @@ class TableViewController: UITableViewController {
         
         return cell
     }
-
+    
 }
 
 
@@ -73,8 +73,12 @@ extension TableViewController: DatabaseManagerDelegate {
 }
 
 extension TableViewController: TableViewCellDelegate {
-    func cellPressed(indexPath: IndexPath) {
+    func callPressed(indexPath: IndexPath) {
         guard let numberStr = users[indexPath.row].phoneNumber else { return }
         shared.makeACallWith(number: numberStr, viewController: self)
+    }
+    
+    func videoCallPressed(indexPath: IndexPath) {
+        performSegue(withIdentifier: "VIdeoVCSegue", sender: self)
     }
 }

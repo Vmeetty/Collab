@@ -15,6 +15,21 @@
 		CE143B682825222100743C1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE143B662825222100743C1D /* LaunchScreen.storyboard */; };
 		CE1714B72829318B004203A9 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1714B62829318B004203A9 /* Extension.swift */; };
 		CE1714BB28296629004203A9 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1714BA28296629004203A9 /* Alerts.swift */; };
+		CE1714D6282BBD84004203A9 /* VideoCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1714D5282BBD84004203A9 /* VideoCallViewController.swift */; };
+		CE1714D9282BD1BB004203A9 /* AINS in Frameworks */ = {isa = PBXBuildFile; productRef = CE1714D8282BD1BB004203A9 /* AINS */; };
+		CE1714DB282BD1BB004203A9 /* AV1Dec in Frameworks */ = {isa = PBXBuildFile; productRef = CE1714DA282BD1BB004203A9 /* AV1Dec */; };
+		CE1714DD282BD1BB004203A9 /* ContentInspect in Frameworks */ = {isa = PBXBuildFile; productRef = CE1714DC282BD1BB004203A9 /* ContentInspect */; };
+		CE1714DF282BD1BB004203A9 /* FullAudioFormat in Frameworks */ = {isa = PBXBuildFile; productRef = CE1714DE282BD1BB004203A9 /* FullAudioFormat */; };
+		CE1714E1282BD1BB004203A9 /* ROIEnc in Frameworks */ = {isa = PBXBuildFile; productRef = CE1714E0282BD1BB004203A9 /* ROIEnc */; };
+		CE1714E3282BD1BB004203A9 /* ReplayKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE1714E2282BD1BB004203A9 /* ReplayKit */; };
+		CE1714E5282BD1BB004203A9 /* RtcBasic in Frameworks */ = {isa = PBXBuildFile; productRef = CE1714E4282BD1BB004203A9 /* RtcBasic */; };
+		CE1714E7282BD1BB004203A9 /* SpatialAudio in Frameworks */ = {isa = PBXBuildFile; productRef = CE1714E6282BD1BB004203A9 /* SpatialAudio */; };
+		CE1714E9282BD1BB004203A9 /* SuperResolution in Frameworks */ = {isa = PBXBuildFile; productRef = CE1714E8282BD1BB004203A9 /* SuperResolution */; };
+		CE1714EB282BD1BB004203A9 /* VideoPreprocess in Frameworks */ = {isa = PBXBuildFile; productRef = CE1714EA282BD1BB004203A9 /* VideoPreprocess */; };
+		CE1714ED282BD1BB004203A9 /* VirtualBackground in Frameworks */ = {isa = PBXBuildFile; productRef = CE1714EC282BD1BB004203A9 /* VirtualBackground */; };
+		CE171562282BE217004203A9 /* AgoraRtmControl in Frameworks */ = {isa = PBXBuildFile; productRef = CE171561282BE217004203A9 /* AgoraRtmControl */; };
+		CE171564282BE217004203A9 /* AgoraUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE171563282BE217004203A9 /* AgoraUIKit */; };
+		CE171566282BE217004203A9 /* AgoraUIKitBasic in Frameworks */ = {isa = PBXBuildFile; productRef = CE171565282BE217004203A9 /* AgoraUIKitBasic */; };
 		CE6CE2F22825A620006D5621 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE2F12825A620006D5621 /* LoginViewController.swift */; };
 		CE6CE2F42825A634006D5621 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE2F32825A634006D5621 /* RegisterViewController.swift */; };
 		CE6CE2F62825B83B006D5621 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE2F52825B83B006D5621 /* Constants.swift */; };
@@ -43,6 +58,7 @@
 		CE143B692825222100743C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1714B62829318B004203A9 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		CE1714BA28296629004203A9 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		CE1714D5282BBD84004203A9 /* VideoCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCallViewController.swift; sourceTree = "<group>"; };
 		CE6CE2F12825A620006D5621 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE6CE2F32825A634006D5621 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		CE6CE2F52825B83B006D5621 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -61,7 +77,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE171564282BE217004203A9 /* AgoraUIKit in Frameworks */,
+				CE1714E9282BD1BB004203A9 /* SuperResolution in Frameworks */,
+				CE1714E1282BD1BB004203A9 /* ROIEnc in Frameworks */,
 				DBF9A886D1F3ECC013BD0758 /* Pods_Collab.framework in Frameworks */,
+				CE1714E3282BD1BB004203A9 /* ReplayKit in Frameworks */,
+				CE171562282BE217004203A9 /* AgoraRtmControl in Frameworks */,
+				CE1714E7282BD1BB004203A9 /* SpatialAudio in Frameworks */,
+				CE171566282BE217004203A9 /* AgoraUIKitBasic in Frameworks */,
+				CE1714E5282BD1BB004203A9 /* RtcBasic in Frameworks */,
+				CE1714DF282BD1BB004203A9 /* FullAudioFormat in Frameworks */,
+				CE1714DB282BD1BB004203A9 /* AV1Dec in Frameworks */,
+				CE1714ED282BD1BB004203A9 /* VirtualBackground in Frameworks */,
+				CE1714D9282BD1BB004203A9 /* AINS in Frameworks */,
+				CE1714EB282BD1BB004203A9 /* VideoPreprocess in Frameworks */,
+				CE1714DD282BD1BB004203A9 /* ContentInspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +158,7 @@
 				CE6CE2F32825A634006D5621 /* RegisterViewController.swift */,
 				CE6CE34228260208006D5621 /* TableViewController.swift */,
 				CE6CE3472826C20D006D5621 /* ProfileViewController.swift */,
+				CE1714D5282BBD84004203A9 /* VideoCallViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -180,6 +211,22 @@
 			dependencies = (
 			);
 			name = Collab;
+			packageProductDependencies = (
+				CE1714D8282BD1BB004203A9 /* AINS */,
+				CE1714DA282BD1BB004203A9 /* AV1Dec */,
+				CE1714DC282BD1BB004203A9 /* ContentInspect */,
+				CE1714DE282BD1BB004203A9 /* FullAudioFormat */,
+				CE1714E0282BD1BB004203A9 /* ROIEnc */,
+				CE1714E2282BD1BB004203A9 /* ReplayKit */,
+				CE1714E4282BD1BB004203A9 /* RtcBasic */,
+				CE1714E6282BD1BB004203A9 /* SpatialAudio */,
+				CE1714E8282BD1BB004203A9 /* SuperResolution */,
+				CE1714EA282BD1BB004203A9 /* VideoPreprocess */,
+				CE1714EC282BD1BB004203A9 /* VirtualBackground */,
+				CE171561282BE217004203A9 /* AgoraRtmControl */,
+				CE171563282BE217004203A9 /* AgoraUIKit */,
+				CE171565282BE217004203A9 /* AgoraUIKitBasic */,
+			);
 			productName = Collab;
 			productReference = CE143B582825222000743C1D /* Collab.app */;
 			productType = "com.apple.product-type.application";
@@ -208,6 +255,10 @@
 				Base,
 			);
 			mainGroup = CE143B4F2825222000743C1D;
+			packageReferences = (
+				CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */,
+				CE171560282BE217004203A9 /* XCRemoteSwiftPackageReference "iOS-UIKit" */,
+			);
 			productRefGroup = CE143B592825222000743C1D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -288,6 +339,7 @@
 				CE143B5C2825222000743C1D /* AppDelegate.swift in Sources */,
 				CE6CE3482826C20D006D5621 /* ProfileViewController.swift in Sources */,
 				CE6CE34628260337006D5621 /* TableViewCell.swift in Sources */,
+				CE1714D6282BBD84004203A9 /* VideoCallViewController.swift in Sources */,
 				CE1714B72829318B004203A9 /* Extension.swift in Sources */,
 				CE6CE3402825FF31006D5621 /* User.swift in Sources */,
 				CE143B5E2825222000743C1D /* SceneDelegate.swift in Sources */,
@@ -444,6 +496,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Collab/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Collab;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To see you";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To hear you";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Into Collab app usage only.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -476,6 +530,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Collab/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Collab;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To see you";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To hear you";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Into Collab app usage only.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -518,6 +574,98 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AgoraIO/AgoraRtcEngine_iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.7.0;
+			};
+		};
+		CE171560282BE217004203A9 /* XCRemoteSwiftPackageReference "iOS-UIKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AgoraIO-Community/iOS-UIKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE1714D8282BD1BB004203A9 /* AINS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = AINS;
+		};
+		CE1714DA282BD1BB004203A9 /* AV1Dec */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = AV1Dec;
+		};
+		CE1714DC282BD1BB004203A9 /* ContentInspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = ContentInspect;
+		};
+		CE1714DE282BD1BB004203A9 /* FullAudioFormat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = FullAudioFormat;
+		};
+		CE1714E0282BD1BB004203A9 /* ROIEnc */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = ROIEnc;
+		};
+		CE1714E2282BD1BB004203A9 /* ReplayKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = ReplayKit;
+		};
+		CE1714E4282BD1BB004203A9 /* RtcBasic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = RtcBasic;
+		};
+		CE1714E6282BD1BB004203A9 /* SpatialAudio */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = SpatialAudio;
+		};
+		CE1714E8282BD1BB004203A9 /* SuperResolution */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = SuperResolution;
+		};
+		CE1714EA282BD1BB004203A9 /* VideoPreprocess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = VideoPreprocess;
+		};
+		CE1714EC282BD1BB004203A9 /* VirtualBackground */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE1714D7282BD1BB004203A9 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = VirtualBackground;
+		};
+		CE171561282BE217004203A9 /* AgoraRtmControl */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE171560282BE217004203A9 /* XCRemoteSwiftPackageReference "iOS-UIKit" */;
+			productName = AgoraRtmControl;
+		};
+		CE171563282BE217004203A9 /* AgoraUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE171560282BE217004203A9 /* XCRemoteSwiftPackageReference "iOS-UIKit" */;
+			productName = AgoraUIKit;
+		};
+		CE171565282BE217004203A9 /* AgoraUIKitBasic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE171560282BE217004203A9 /* XCRemoteSwiftPackageReference "iOS-UIKit" */;
+			productName = AgoraUIKitBasic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE143B502825222000743C1D /* Project object */;
 }
