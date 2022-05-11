@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TableViewCellDelegate: AnyObject {
+   func cellPressed(indexPath: IndexPath)
+}
+
 class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var imageImageView: UIImageView!
@@ -15,18 +19,20 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var callButton: UIImageView!
     @IBOutlet weak var videoCallButton: UIImageView!
     
-
+    var indexPath: IndexPath!
+    weak var delegate: TableViewCellDelegate?
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(makeACall))
+        callButton.addGestureRecognizer(tapGR)
+        callButton.isUserInteractionEnabled = true
     }
-    @IBAction func callPressed(_ sender: UIButton) {
-        print("Make a call")
+    
+    @objc func makeACall() {
+        delegate?.cellPressed(indexPath: indexPath)
     }
-    @IBAction func videoCallPressed(_ sender: UIButton) {
-        print("make a video call")
-    }
+ 
     
 }

@@ -12,11 +12,13 @@ class User {
     
     var name: String
     var role: String
+    var phoneNumber: String?
     var url: String?
     
-    init(name: String, role: String, url: String?) {
+    init(name: String, role: String, phoneNumber: String?, url: String?) {
         self.name = name
         self.role = role
+        self.phoneNumber = phoneNumber
         self.url = url
     }
     

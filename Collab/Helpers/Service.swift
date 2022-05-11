@@ -56,4 +56,41 @@ class Service {
         imageView.layer.shadowPath = UIBezierPath(roundedRect: imageView.bounds, cornerRadius: 10).cgPath
     }
     
+    func makeACallWith(number numberStr: String, viewController: UIViewController) {
+        if let phoneCallURL = URL(string: "tel:\(numberStr)") {
+            let application = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL)) {
+                let alertController = UIAlertController(title: "MyApp", message: "Are you sure you want to call \n\(numberStr)?", preferredStyle: .alert)
+                let yesPressed = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                    application.open(phoneCallURL)
+                })
+                let noPressed = UIAlertAction(title: "No", style: .default, handler: { (action) in
+                    
+                })
+                alertController.addAction(yesPressed)
+                alertController.addAction(noPressed)
+                viewController.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    /// mask : `+XXXXXXXXXXXX`
+    func format(with mask: String, phone: String) -> String {
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = numbers.startIndex
+
+        for ch in mask where index < numbers.endIndex {
+            if ch == "X" {
+                result.append(numbers[index])
+
+                index = numbers.index(after: index)
+
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
+    }
+    
 }

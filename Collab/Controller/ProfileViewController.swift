@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var roleTextField: UITextField!
+    @IBOutlet weak var phoneNumber: UITextField!
     
     let service = Service()
     var urlStr: String?
@@ -28,14 +29,16 @@ class ProfileViewController: UIViewController {
         
         nameTextField.delegate = self
         roleTextField.delegate = self
+        phoneNumber.delegate = self
         service.configProfileImageView(profileImageView)
         
         DatabaseManager
             .shared
             .getCurrentUser { user in
-            self.nameTextField.text = user.name
-            self.roleTextField.text = user.role
-            self.urlStr = user.url
+                self.nameTextField.text = user.name
+                self.roleTextField.text = user.role
+                self.phoneNumber.text = user.phoneNumber
+                self.urlStr = user.url
             
             DatabaseManager
                 .shared
@@ -90,7 +93,6 @@ extension ProfileViewController: UITextFieldDelegate {
     private func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-        // Keyboard doesn't dissmis ****************=--=-=-=-=-=-=**********************777777**(&&(*&(*&(&(&
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -103,9 +105,17 @@ extension ProfileViewController: UITextFieldDelegate {
         switch textField {
         case nameTextField: key = K.UserData.nameKey
         case roleTextField: key = K.UserData.roleKey
+        case phoneNumber:   key = K.UserData.phoneNumber
         default: break
         }
         DatabaseManager.shared.updateUserData([key: value])
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        let newString = (text as NSString).replacingCharacters(in: range, with: string)
+        textField.text = Service.shared.format(with: K.formatNumber, phone: newString)
+        return false
     }
 }
 

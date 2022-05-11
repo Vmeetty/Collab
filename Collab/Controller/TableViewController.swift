@@ -46,17 +46,22 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Id.cellId, for: indexPath) as! TableViewCell
         cell.nameLabel.text = users[indexPath.row].name
         cell.rolLabel.text = users[indexPath.row].role
+        cell.indexPath = indexPath
+        cell.delegate = self
+        cell.callButton.isHidden = users[indexPath.row].phoneNumber != nil ? false : true
+        
         if let imageUrl = users[indexPath.row].url {
             cell.imageImageView.loadImageUsingCashWithUrlString(urlString: imageUrl)
         } else {
             cell.imageImageView.image = UIImage(systemName: K.Images.personImage)
         }
+        
         shared.configProfileImageView(cell.imageImageView)
-        shared.configCellButtons(cell.callButton)
         shared.configCellButtons(cell.videoCallButton)
         
         return cell
     }
+
 }
 
 
@@ -64,5 +69,12 @@ extension TableViewController: DatabaseManagerDelegate {
     func getUser(_ newUser: User) {
         self.users.append(newUser)
         self.tableView.reloadData()
+    }
+}
+
+extension TableViewController: TableViewCellDelegate {
+    func cellPressed(indexPath: IndexPath) {
+        guard let numberStr = users[indexPath.row].phoneNumber else { return }
+        shared.makeACallWith(number: numberStr, viewController: self)
     }
 }

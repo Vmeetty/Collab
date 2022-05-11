@@ -11,13 +11,13 @@ import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
 
-protocol DatabaseManagerDelegate {
+protocol DatabaseManagerDelegate: AnyObject {
     func getUser(_ newUser: User)
 }
 
 class DatabaseManager {
     
-    var delegate: DatabaseManagerDelegate?
+    weak var delegate: DatabaseManagerDelegate?
     
     static let shared = DatabaseManager()
     let storage = Storage.storage()
@@ -39,8 +39,6 @@ class DatabaseManager {
             if let err = err {
                 print("Error writing document: \(err.localizedDescription)")
                 return
-            } else {
-                print("Document successfully written!")
             }
         }
     }
@@ -56,17 +54,26 @@ class DatabaseManager {
     
     //MARK: - Fetch users
     
+    private func decodingData(_ data: [String: Any]) -> User? {
+        if let email = data[K.UserData.emailKey] as? String {
+            let name = data[K.UserData.nameKey] as? String ?? email
+            let role = data[K.UserData.roleKey] as? String ?? ""
+            let number = data[K.UserData.phoneNumber] as? String ?? nil
+            let imageUrl = data[K.UserData.imageURLKey] as? String
+            let newUser = User(name: name, role: role, phoneNumber: number, url: imageUrl)
+            return newUser
+        } else {
+            return nil
+        }
+    }
+    
     // Current user data
     func getCurrentUser(_ complition: @escaping (User) -> ()) {
         let docRef = db.collection(K.Firestore.usersDocument).document(uid)
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 guard let data = document.data() else { return }
-                if let email = data[K.UserData.emailKey] as? String {
-                    let name = data[K.UserData.nameKey] as? String ?? email
-                    let role = data[K.UserData.roleKey] as? String ?? ""
-                    let imageUrl = data[K.UserData.imageURLKey] as? String
-                    let newUser = User(name: name, role: role, url: imageUrl)
+                if let newUser = self.decodingData(data) {
                     complition(newUser)
                 } else {
                     print("Vlad_Ch. Email not exist")
@@ -86,11 +93,7 @@ class DatabaseManager {
             } else {
                 for document in querySnapshot!.documents {
                     let data = document.data()
-                    if let email = data[K.UserData.emailKey] as? String {
-                        let name = data[K.UserData.nameKey] as? String ?? email
-                        let role = data[K.UserData.roleKey] as? String ?? ""
-                        let imageUrl = data[K.UserData.imageURLKey] as? String
-                        let newUser = User(name: name, role: role, url: imageUrl)
+                    if let newUser = self?.decodingData(data) {
                         self?.delegate?.getUser(newUser)
                     } else {
                         print("Vlad_Ch. Email not exist")
@@ -113,7 +116,6 @@ class DatabaseManager {
                 if let error = error {
                     print("Got an download erroe: \(error)")
                 } else {
-                    print("Successfully download data with url")
                     imageView.image = UIImage(data: data!)
                 }
             }
@@ -127,23 +129,21 @@ class DatabaseManager {
         let uploadRef = Storage.storage().reference(withPath: "\(uid).jpg")
         guard let image = image?.jpegData(compressionQuality: 0.25) else { return }
         let uploadMetadata = StorageMetadata.init()
-        uploadMetadata.contentType = "image/jpeg"
+        uploadMetadata.contentType = K.Firestore.metaData
         
         uploadRef.putData(image, metadata: uploadMetadata) { downloadMetadata, error in
             if let error = error {
-                print("Got an erroe: \(error)")
+                print("\(K.Errors.gotErr) \(error)")
             } else {
-                print("Put is completed and I got this back: \(downloadMetadata)")
                 uploadRef.downloadURL { url, error in
                     if let error = error {
                         print("Got an erroe: \(error)")
                     } else {
                         guard let url = url else { return }
-                        print("Successfully stored image with url: \(url.absoluteString)")
                         self.updateUserData([K.UserData.imageURLKey: url.absoluteString])
                     }
                 }
             }
         }
-    }   
+    }
 }
