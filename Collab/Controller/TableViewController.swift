@@ -9,28 +9,53 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    @IBOutlet weak var profileIcon: UIImageView!
+    @IBOutlet weak var searchIcon: UIImageView!
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    
     var users = [User]()
     let dbManager = DatabaseManager()
-    
     let shared = Service.shared
+    let profileVC = ProfileViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapIcon = UITapGestureRecognizer(target: self, action: #selector(profileIconTaped))
+        profileIcon.addGestureRecognizer(tapIcon)
+        profileIcon.isUserInteractionEnabled = true
+        
+        let tapSearch = UITapGestureRecognizer(target: self, action: #selector(profileIconTaped))
+        profileIcon.addGestureRecognizer(tapSearch)
+        profileIcon.isUserInteractionEnabled = true
+        
+        searchTextField.isHidden = true
         
         tableView.dataSource = self
         dbManager.delegate = self
-
+ 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
         users = []
         dbManager.loadUsers()
+
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     
-    @IBAction func settingsPressed(_ sender: UIBarButtonItem) {
+    
+    @objc func profileIconTaped() {
         Service.shared.showActionSheetBy(viewController: self)
+    }
+    
+    @objc func searchIconTaped() {
+        searchTextField.isHidden = false
     }
     
     
@@ -79,6 +104,8 @@ extension TableViewController: TableViewCellDelegate {
     }
     
     func videoCallPressed(indexPath: IndexPath) {
-        performSegue(withIdentifier: "VIdeoVCSegue", sender: self)
+        performSegue(withIdentifier: K.Segue.videoCallSegue, sender: self)
     }
 }
+
+

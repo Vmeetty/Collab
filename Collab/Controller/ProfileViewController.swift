@@ -10,6 +10,7 @@ import PhotosUI
 import FirebaseAuth
 import FirebaseStorage
 
+
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
@@ -19,6 +20,8 @@ class ProfileViewController: UIViewController {
     
     let service = Service()
     var urlStr: String?
+    var email = ""
+    var indexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +52,7 @@ class ProfileViewController: UIViewController {
     @objc func imageTapped() {
         presentPicker()
     }
-    
+        
 }
 
 
@@ -112,10 +115,13 @@ extension ProfileViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return false }
-        let newString = (text as NSString).replacingCharacters(in: range, with: string)
-        textField.text = Service.shared.format(with: K.formatNumber, phone: newString)
-        return false
+        if textField == phoneNumber {
+            guard let text = phoneNumber.text else { return false }
+            let newString = (text as NSString).replacingCharacters(in: range, with: string)
+            phoneNumber.text = Service.shared.format(with: K.formatNumber, phone: newString)
+            return false
+        }
+        return true
     }
 }
 

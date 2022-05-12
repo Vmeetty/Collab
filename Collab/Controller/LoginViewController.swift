@@ -20,6 +20,10 @@ class LoginViewController: UIViewController {
         auth.delegate = self
 
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
 
 
     @IBAction func loginPressed(_ sender: UIButton) {

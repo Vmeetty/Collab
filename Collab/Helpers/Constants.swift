@@ -15,9 +15,10 @@ struct K {
     static let formatNumber       = "+XXXXXXXXXXXX"
     
     struct Segue {
-        static let registerSegue = "RegisterToUsers"
-        static let loginSegue    = "LoginToUsers"
-        static let profileSegue  = "UsersToProfile"
+        static let registerSegue  = "RegisterToUsers"
+        static let loginSegue     = "LoginToUsers"
+        static let profileSegue   = "UsersToProfile"
+        static let videoCallSegue = "VIdeoVCSegue"
     }
     
     struct Id {

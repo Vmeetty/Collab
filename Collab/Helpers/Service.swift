@@ -16,7 +16,11 @@ class Service {
         let alert = UIAlertController(title: "Settings", message: nil, preferredStyle: .actionSheet)
             
             alert.addAction(UIAlertAction(title: "Profile", style: .default , handler:{ (UIAlertAction) in
-                vc.performSegue(withIdentifier: K.Segue.profileSegue, sender: vc)
+//                vc.performSegue(withIdentifier: K.Segue.profileSegue, sender: vc)
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+//                vc.present(nextViewController, animated: true, completion: nil)
+                vc.navigationController?.pushViewController(nextViewController, animated: true)
             }))
             
             alert.addAction(UIAlertAction(title: "Sign out", style: .default , handler:{ (UIAlertAction) in
