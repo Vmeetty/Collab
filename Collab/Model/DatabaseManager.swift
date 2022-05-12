@@ -22,6 +22,7 @@ class DatabaseManager {
     static let shared = DatabaseManager()
     let storage = Storage.storage()
     let db = Firestore.firestore()
+    let usersRef = Firestore.firestore().collection(K.Firestore.usersDocument)
     
     var uid: String {
         guard let id = Auth.auth().currentUser?.uid else {return UUID.init().uuidString}
@@ -104,6 +105,27 @@ class DatabaseManager {
         }
     }
     
+    
+    
+    // Execute a query
+    func fetchUsersWith(text: String) {
+        usersRef.whereField(K.UserData.nameKey, isEqualTo: text).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    if let newUser = self.decodingData(data) {
+                        self.delegate?.getUser(newUser)
+                    } else {
+                        print("Vlad_Ch. Email not exist")
+                        return
+                    }
+                    print("\(document.documentID) => \(document.data())")
+                }
+            }
+        }
+    }
     
     
     

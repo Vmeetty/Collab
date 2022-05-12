@@ -25,10 +25,11 @@ class TableViewController: UITableViewController {
         profileIcon.addGestureRecognizer(tapIcon)
         profileIcon.isUserInteractionEnabled = true
         
-        let tapSearch = UITapGestureRecognizer(target: self, action: #selector(profileIconTaped))
-        profileIcon.addGestureRecognizer(tapSearch)
-        profileIcon.isUserInteractionEnabled = true
+        let tapSearch = UITapGestureRecognizer(target: self, action: #selector(searchIconTaped))
+        searchIcon.addGestureRecognizer(tapSearch)
+        searchIcon.isUserInteractionEnabled = true
         
+        searchTextField.delegate = self
         searchTextField.isHidden = true
         
         tableView.dataSource = self
@@ -55,7 +56,14 @@ class TableViewController: UITableViewController {
     }
     
     @objc func searchIconTaped() {
-        searchTextField.isHidden = false
+        if searchTextField.isHidden {
+            searchTextField.isHidden = false
+        } else if !searchTextField.text!.isEmpty {
+            if let text = searchTextField.text {
+                users = []
+                dbManager.fetchUsersWith(text: text)
+            }
+        }
     }
     
     
@@ -80,7 +88,6 @@ class TableViewController: UITableViewController {
         } else {
             cell.imageImageView.image = UIImage(systemName: K.Images.personImage)
         }
-        
         shared.configProfileImageView(cell.imageImageView)
         shared.configCellButtons(cell.videoCallButton)
         
@@ -92,8 +99,8 @@ class TableViewController: UITableViewController {
 
 extension TableViewController: DatabaseManagerDelegate {
     func getUser(_ newUser: User) {
-        self.users.append(newUser)
-        self.tableView.reloadData()
+        users.append(newUser)
+        tableView.reloadData()
     }
 }
 
@@ -108,4 +115,26 @@ extension TableViewController: TableViewCellDelegate {
     }
 }
 
+extension TableViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { timer in
+            self.searchIcon.tintColor = UIColor.white
+        }
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.text = ""
+        users = []
+        dbManager.loadUsers()
+        searchTextField.isHidden = true
+        searchIcon.tintColor = UIColor(red: 0.15, green: 0.26, blue: 0.28, alpha: 1.00)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text else { return true }
+        users = []
+        dbManager.fetchUsersWith(text: text)
+        
+        return true
+    }
+    
+}
 

@@ -161,7 +161,7 @@
                                         <constraint firstAttribute="height" constant="30" id="hmq-tG-C1P"/>
                                     </constraints>
                                     <color key="textColor" red="0.93565040209999994" green="0.97078953130000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="58a-hv-dBb">

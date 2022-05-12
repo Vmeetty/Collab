@@ -158,7 +158,6 @@
 				CE6CE2F32825A634006D5621 /* RegisterViewController.swift */,
 				CE6CE34228260208006D5621 /* TableViewController.swift */,
 				CE6CE3472826C20D006D5621 /* ProfileViewController.swift */,
-				CE1714D5282BBD84004203A9 /* VideoCallViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -180,6 +179,7 @@
 				CE6CE2F52825B83B006D5621 /* Constants.swift */,
 				CE1714B62829318B004203A9 /* Extension.swift */,
 				CE1714BA28296629004203A9 /* Alerts.swift */,
+				CE1714D5282BBD84004203A9 /* VideoCallViewController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

@@ -13,30 +13,26 @@ class Service {
     static let shared = Service()
     
     func showActionSheetBy(viewController vc: UIViewController) {
-        let alert = UIAlertController(title: "Settings", message: nil, preferredStyle: .actionSheet)
-            
-            alert.addAction(UIAlertAction(title: "Profile", style: .default , handler:{ (UIAlertAction) in
-//                vc.performSegue(withIdentifier: K.Segue.profileSegue, sender: vc)
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-//                vc.present(nextViewController, animated: true, completion: nil)
-                vc.navigationController?.pushViewController(nextViewController, animated: true)
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Sign out", style: .default , handler:{ (UIAlertAction) in
-                do {
-                    try Auth.auth().signOut()
-                    vc.navigationController?.popToRootViewController(animated: true)
-                } catch let error as NSError {
-                    print(error)
-                }
-            }))
+        let alert = UIAlertController(title: K.SettingsAlert.title, message: nil, preferredStyle: .actionSheet)
         
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-
-            vc.present(alert, animated: true, completion: {
-                print("completion block")
-            })
+        alert.addAction(UIAlertAction(title: K.SettingsAlert.action1, style: .default , handler:{ (UIAlertAction) in
+            let storyBoard : UIStoryboard = UIStoryboard(name: K.SettingsAlert.storyBoard, bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: K.ViewControllers.profileVC) as! ProfileViewController
+            vc.navigationController?.pushViewController(nextViewController, animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: K.SettingsAlert.action2, style: .default , handler:{ (UIAlertAction) in
+            do {
+                try Auth.auth().signOut()
+                vc.navigationController?.popToRootViewController(animated: true)
+            } catch let error as NSError {
+                print(error)
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: K.SettingsAlert.cancel, style: .cancel, handler: nil))
+        
+        vc.present(alert, animated: true)
     }
     
     
@@ -64,11 +60,11 @@ class Service {
         if let phoneCallURL = URL(string: "tel:\(numberStr)") {
             let application = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
-                let alertController = UIAlertController(title: "MyApp", message: "Are you sure you want to call \n\(numberStr)?", preferredStyle: .alert)
-                let yesPressed = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                let alertController = UIAlertController(title: K.CallAlert.title, message: "\(K.CallAlert.message) \n\(numberStr)?", preferredStyle: .alert)
+                let yesPressed = UIAlertAction(title: K.CallAlert.yes, style: .default, handler: { (action) in
                     application.open(phoneCallURL)
                 })
-                let noPressed = UIAlertAction(title: "No", style: .default, handler: { (action) in
+                let noPressed = UIAlertAction(title: K.CallAlert.no, style: .default, handler: { (action) in
                     
                 })
                 alertController.addAction(yesPressed)
@@ -83,13 +79,13 @@ class Service {
         let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         var result = ""
         var index = numbers.startIndex
-
+        
         for ch in mask where index < numbers.endIndex {
             if ch == "X" {
                 result.append(numbers[index])
-
+                
                 index = numbers.index(after: index)
-
+                
             } else {
                 result.append(ch)
             }

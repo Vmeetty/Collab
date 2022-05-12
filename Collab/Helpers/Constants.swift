@@ -47,4 +47,31 @@ struct K {
     struct Errors {
         static let gotErr = "Got an erroe:"
     }
+    
+    struct SettingsAlert {
+        static let title      = "Settings"
+        static let action1    = "Profile"
+        static let action2    = "Sign out"
+        static let cancel     = "Dismiss"
+        static let storyBoard = "Main"
+    }
+    
+    struct CallAlert {
+        static let title   = "Сonfirm the action"
+        static let message = "Are you sure you want to call"
+        static let yes = "Yes"
+        static let no  = "No"
+    }
+    
+    struct ViewControllers {
+        static let profileVC = "ProfileViewController"
+    }
+    
+    struct PassAlert {
+        static let title   = "Forgot your password?"
+        static let message = "We can send a new one on your email"
+        static let action1 = "Send"
+        static let placeholder = "Write your email here..."
+        
+    }
 }
